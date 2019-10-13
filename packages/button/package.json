@@ -1,0 +1,17 @@
+{
+  "name": "button",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/button.js",
+  "module": "lib/button.esm.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/classnames": "^2.2.9",
+    "classnames": "^2.2.6"
+  }
+}
