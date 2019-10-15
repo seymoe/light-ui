@@ -1,0 +1,83 @@
+@import '../../bundle/src/var.scss';
+
+.lt-button{
+  position: relative;
+  display: inline-block;
+  height: $button-default-height;
+  line-height: $button-default-line-height;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: $button-border-radius;
+  transition: opacity $animation-duration-fast;
+  -webkit-appearance: none;
+  -webkit-text-size-adjust: 100%;
+  cursor: default;
+  outline: none;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: $black;
+    border: inherit;
+    border-color: $black;
+    border-radius: inherit; /* inherit parent's border radius */
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    content: '';
+  }
+
+  &:active::before {
+    opacity: .1;
+  }
+  &--default{
+    color: $button-default-color;
+    background-color: $button-default-background-color;
+    border: $button-border-width solid $button-default-border-color;
+  }
+  &--primary {
+    color: $button-primary-color;
+    background-color: $button-primary-background-color;
+    border: $button-border-width solid $button-primary-border-color;
+  }
+  &--info {
+    color: $button-info-color;
+    background-color: $button-info-background-color;
+    border: $button-border-width solid $button-info-border-color;
+  }
+  &--warning {
+    color: $button-warning-color;
+    background-color: $button-warning-background-color;
+    border: $button-border-width solid $button-warning-border-color;
+  }
+  &--danger {
+    color: $button-danger-color;
+    background-color: $button-danger-background-color;
+    border: $button-border-width solid $button-danger-border-color;
+  }
+
+  // size
+  &--large {
+    padding: 0 $padding-lg;
+    height: $button-large-height;
+    line-height: $button-large-line-height;
+  }
+  &--normal{
+    padding: 0 $padding-md;
+    font-size: $button-normal-font-size;
+  }
+  &--small{
+    padding: 0 $padding-sm;
+    font-size: $button-small-font-size;
+    height: $button-small-height;
+    line-height: $button-small-line-height;
+  }
+  &--mini{
+    padding: 0 $padding-xs;
+    font-size: $button-mini-font-size;
+    height: $button-mini-height;
+    line-height: $button-mini-line-height;
+  }
+}

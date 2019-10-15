@@ -1,9 +1,13 @@
 /*!
- * button.js v0.0.1
+ * bundle.js v0.0.1
  * (c) 2019 
  * Released under the MIT License.
  */
-import { Component, Children, createElement } from 'react';
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var React = require('react');
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -58,7 +62,7 @@ var classnames = createCommonjsModule(function (module) {
 }());
 });
 
-class Button extends Component {
+class Button extends React.Component {
     render() {
         const { prefixCls, type, size, disabled, loading, onClick, children } = this.props;
         const wrapCls = classnames(prefixCls, {
@@ -74,8 +78,8 @@ class Button extends Component {
             [`${prefixCls}--disabled`]: disabled,
             [`${prefixCls}--loading`]: loading
         });
-        const kids = Children.map(children, child => child);
-        return (createElement("button", { className: wrapCls, onClick: disabled ? undefined : onClick }, kids));
+        const kids = React.Children.map(children, child => child);
+        return (React.createElement("button", { className: wrapCls, onClick: disabled ? undefined : onClick }, kids));
     }
 }
 Button.defaultProps = {
@@ -86,5 +90,5 @@ Button.defaultProps = {
     loading: false,
 };
 
-export default Button;
-//# sourceMappingURL=button.esm.js.map
+exports.Button = Button;
+//# sourceMappingURL=lightui.js.map

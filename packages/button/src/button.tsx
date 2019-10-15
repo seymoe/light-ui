@@ -3,18 +3,18 @@ import classnames from 'classnames'
 
 interface ButtonPropsType {
   prefixCls?: string;
-  type?: 'primary' | 'warning' | 'ghost';
-  size?: 'large' | 'small';
+  type?: 'default' | 'primary' | 'info' | 'warning' | 'danger';
+  size?: 'large' | 'normal' | 'small' | 'mini';
   disabled?: boolean;
   loading?: boolean;
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
 export default class Button extends React.Component<ButtonPropsType, any> {
   static defaultProps = {
     prefixCls: 'lt-button',
-    type: 'primary',
-    size: 'large',
+    type: 'default',
+    size: 'normal',
     disabled: false,
     loading: false,
   }
@@ -29,21 +29,25 @@ export default class Button extends React.Component<ButtonPropsType, any> {
       children
     } = this.props
     const wrapCls = classnames(prefixCls, {
-      [`${ prefixCls }-primary`]: type === 'primary',
-      [`${ prefixCls }-warning`]: type === 'warning',
-      [`${ prefixCls }-ghost`]: type === 'ghost',
-      [`${ prefixCls }-small`]: size === 'small',
-      [`${ prefixCls }-disabled`]: disabled,
-      [`${ prefixCls }-loading`]: loading
+      [`${ prefixCls }--default`]: type === 'default',
+      [`${ prefixCls }--primary`]: type === 'primary',
+      [`${ prefixCls }--info`]: type === 'info',
+      [`${ prefixCls }--warning`]: type === 'warning',
+      [`${ prefixCls }--danger`]: type === 'danger',
+      [`${ prefixCls }--large`]: size === 'large',
+      [`${ prefixCls }--normal`]: size === 'normal',
+      [`${ prefixCls }--small`]: size === 'small',
+      [`${ prefixCls }--mini`]: size === 'mini',
+      [`${ prefixCls }--disabled`]: disabled,
+      [`${ prefixCls }--loading`]: loading
     })
     const kids = React.Children.map(children, child => child)
     return (
-      <a 
-        role="button"
+      <button
         className={ wrapCls }
         onClick={ disabled ? undefined : onClick }>
           { kids }
-      </a>
+      </button>
     )
   }
 }

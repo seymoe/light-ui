@@ -3,6 +3,9 @@ import { getPackages } from '@lerna/project'
 import path from 'path'
 import minimist from 'minimist'
 import typescript from 'rollup-plugin-typescript2'
+import resolve from 'rollup-plugin-node-resolve'
+import postcss from 'rollup-plugin-postcss'
+import commonjs from 'rollup-plugin-commonjs'
 
 // Get a list of the non-private sorted packages with Lerna v3
 async function getSortedPackages() {
@@ -23,6 +26,12 @@ async function getSortedPackages() {
 
 async function main() {
   const plugins = [
+    resolve(),
+    commonjs(),
+    postcss({
+      extract: true,
+      extensions: ['.scss']
+    }),
     typescript({
       tsconfig: 'tsconfig.json'
     })

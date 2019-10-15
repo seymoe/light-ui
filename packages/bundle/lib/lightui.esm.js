@@ -1,5 +1,5 @@
 /*!
- * button.js v0.0.1
+ * bundle.js v0.0.1
  * (c) 2019 
  * Released under the MIT License.
  */
@@ -86,5 +86,5 @@ Button.defaultProps = {
     loading: false,
 };
 
-export default Button;
-//# sourceMappingURL=button.esm.js.map
+export { Button };
+//# sourceMappingURL=lightui.esm.js.map
