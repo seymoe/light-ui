@@ -1,7 +1,8 @@
 import React from 'react'
-import { Button } from '../../packages/bundle/lib/lightui.esm'
-import '../../packages/bundle/src/index.scss'
+import { Button, Row } from '../../bundle/lib/lightui.esm'
+// import '../../packages/theme-default/src/index.scss'
 import './index.scss'
+import '../../packages/theme-default/src/index.scss'
 
 export default { title: '基础组件' }
 
@@ -44,4 +45,14 @@ export const button = () => {
 
     </div>
   )
+}
+
+export const layout = () => {
+  return <div>
+    <h1>栅格布局</h1>
+    <Row type="flex" justify="center">
+      <div>left</div>
+      <div>right</div>
+    </Row>
+  </div>
 }

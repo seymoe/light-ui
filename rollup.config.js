@@ -39,7 +39,7 @@ async function main() {
   const sourcemap = true
   const packages = await getSortedPackages()
   const results = []
-  packages.forEach((pkg) => {
+  packages.filter(pkg => pkg.name !== 'theme-default').forEach((pkg) => {
     const { name, main, module, version, author } = pkg.toJSON()
     // exp: packages/button
     const basePath = path.relative(__dirname, pkg.location)

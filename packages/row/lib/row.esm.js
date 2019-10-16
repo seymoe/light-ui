@@ -1,9 +1,9 @@
 /*!
- * button.js v0.0.1
+ * row.js v0.0.1
  * (c) 2019 
  * Released under the MIT License.
  */
-import { Component, Children, createElement } from 'react';
+import { PureComponent, Children, createElement } from 'react';
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -58,36 +58,22 @@ var classnames = createCommonjsModule(function (module) {
 }());
 });
 
-class Button extends Component {
+class Row extends PureComponent {
     render() {
-        const { cls, type, size, round, square, disabled, loading, onClick, children } = this.props;
-        const prefixCls = 'lt-button';
+        const { cls, type, justify, align, gutter, children } = this.props;
+        const flex = type === 'flex';
+        const prefixCls = 'lt-row';
+        const margin = `-${Number(gutter) / 2}px`;
+        const style = gutter ? { marginLeft: margin, marginRight: margin } : {};
         const wrapCls = classnames(cls, prefixCls, {
-            [`${prefixCls}--default`]: type === 'default',
-            [`${prefixCls}--primary`]: type === 'primary',
-            [`${prefixCls}--info`]: type === 'info',
-            [`${prefixCls}--warning`]: type === 'warning',
-            [`${prefixCls}--danger`]: type === 'danger',
-            [`${prefixCls}--large`]: size === 'large',
-            [`${prefixCls}--normal`]: size === 'normal',
-            [`${prefixCls}--small`]: size === 'small',
-            [`${prefixCls}--mini`]: size === 'mini',
-            [`${prefixCls}--disabled`]: disabled,
-            [`${prefixCls}--loading`]: loading,
-            [`${prefixCls}--square`]: square,
-            [`${prefixCls}--round`]: round
+            [`${prefixCls}--flex`]: flex,
+            [`${prefixCls}--justify-${justify}`]: flex && justify,
+            [`${prefixCls}--align-${align}`]: flex && align,
         });
         const kids = Children.map(children, child => child);
-        return (createElement("button", { className: wrapCls, onClick: disabled ? undefined : onClick }, kids));
+        return (createElement("div", { className: wrapCls, style: style }, kids));
     }
 }
-Button.defaultProps = {
-    cls: 'lt-button',
-    type: 'default',
-    size: 'normal',
-    disabled: false,
-    loading: false,
-};
 
-export default Button;
-//# sourceMappingURL=button.esm.js.map
+export default Row;
+//# sourceMappingURL=row.esm.js.map

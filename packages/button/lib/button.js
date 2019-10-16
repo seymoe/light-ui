@@ -62,8 +62,9 @@ var classnames = createCommonjsModule(function (module) {
 
 class Button extends React.Component {
     render() {
-        const { prefixCls, type, size, round, square, disabled, loading, onClick, children } = this.props;
-        const wrapCls = classnames(prefixCls, {
+        const { cls, type, size, round, square, disabled, loading, onClick, children } = this.props;
+        const prefixCls = 'lt-button';
+        const wrapCls = classnames(cls, prefixCls, {
             [`${prefixCls}--default`]: type === 'default',
             [`${prefixCls}--primary`]: type === 'primary',
             [`${prefixCls}--info`]: type === 'info',
@@ -83,7 +84,7 @@ class Button extends React.Component {
     }
 }
 Button.defaultProps = {
-    prefixCls: 'lt-button',
+    cls: 'lt-button',
     type: 'default',
     size: 'normal',
     disabled: false,

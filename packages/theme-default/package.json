@@ -1,9 +1,8 @@
 {
-  "name": "bundle",
-  "version": "0.0.1",
+  "name": "theme-default",
+  "version": "1.0.0",
   "description": "",
-  "main": "lib/lightui.js",
-  "module": "lib/lightui.esm.js",
+  "main": "lib/index.css",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

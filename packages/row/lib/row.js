@@ -1,11 +1,9 @@
 /*!
- * bundle.js v0.0.1
+ * row.js v0.0.1
  * (c) 2019 
  * Released under the MIT License.
  */
 'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
 
@@ -62,35 +60,22 @@ var classnames = createCommonjsModule(function (module) {
 }());
 });
 
-class Button extends React.Component {
+class Row extends React.PureComponent {
     render() {
-        const { prefixCls, type, size, round, square, disabled, loading, onClick, children } = this.props;
-        const wrapCls = classnames(prefixCls, {
-            [`${prefixCls}--default`]: type === 'default',
-            [`${prefixCls}--primary`]: type === 'primary',
-            [`${prefixCls}--info`]: type === 'info',
-            [`${prefixCls}--warning`]: type === 'warning',
-            [`${prefixCls}--danger`]: type === 'danger',
-            [`${prefixCls}--large`]: size === 'large',
-            [`${prefixCls}--normal`]: size === 'normal',
-            [`${prefixCls}--small`]: size === 'small',
-            [`${prefixCls}--mini`]: size === 'mini',
-            [`${prefixCls}--disabled`]: disabled,
-            [`${prefixCls}--loading`]: loading,
-            [`${prefixCls}--square`]: square,
-            [`${prefixCls}--round`]: round
+        const { cls, type, justify, align, gutter, children } = this.props;
+        const flex = type === 'flex';
+        const prefixCls = 'lt-row';
+        const margin = `-${Number(gutter) / 2}px`;
+        const style = gutter ? { marginLeft: margin, marginRight: margin } : {};
+        const wrapCls = classnames(cls, prefixCls, {
+            [`${prefixCls}--flex`]: flex,
+            [`${prefixCls}--justify-${justify}`]: flex && justify,
+            [`${prefixCls}--align-${align}`]: flex && align,
         });
         const kids = React.Children.map(children, child => child);
-        return (React.createElement("button", { className: wrapCls, onClick: disabled ? undefined : onClick }, kids));
+        return (React.createElement("div", { className: wrapCls, style: style }, kids));
     }
 }
-Button.defaultProps = {
-    prefixCls: 'lt-button',
-    type: 'default',
-    size: 'normal',
-    disabled: false,
-    loading: false,
-};
 
-exports.Button = Button;
-//# sourceMappingURL=lightui.js.map
+module.exports = Row;
+//# sourceMappingURL=row.js.map

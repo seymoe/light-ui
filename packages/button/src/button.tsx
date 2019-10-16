@@ -2,19 +2,19 @@ import * as React from 'react'
 import classnames from 'classnames'
 
 interface ButtonPropsType {
-  prefixCls?: string;
+  cls?: string;
   type?: 'default' | 'primary' | 'info' | 'warning' | 'danger';
   size?: 'large' | 'normal' | 'small' | 'mini';
   round?: boolean;
   square?: boolean;
   disabled?: boolean;
   loading?: boolean;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export default class Button extends React.Component<ButtonPropsType, any> {
   static defaultProps = {
-    prefixCls: 'lt-button',
+    cls: 'lt-button',
     type: 'default',
     size: 'normal',
     disabled: false,
@@ -22,7 +22,7 @@ export default class Button extends React.Component<ButtonPropsType, any> {
   }
   render() {
     const {
-      prefixCls,
+      cls,
       type,
       size,
       round,
@@ -32,7 +32,8 @@ export default class Button extends React.Component<ButtonPropsType, any> {
       onClick,
       children
     } = this.props
-    const wrapCls = classnames(prefixCls, {
+    const prefixCls = 'lt-button'
+    const wrapCls = classnames(cls, prefixCls, {
       [`${ prefixCls }--default`]: type === 'default',
       [`${ prefixCls }--primary`]: type === 'primary',
       [`${ prefixCls }--info`]: type === 'info',
