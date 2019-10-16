@@ -5,6 +5,8 @@ interface ButtonPropsType {
   prefixCls?: string;
   type?: 'default' | 'primary' | 'info' | 'warning' | 'danger';
   size?: 'large' | 'normal' | 'small' | 'mini';
+  round?: boolean;
+  square?: boolean;
   disabled?: boolean;
   loading?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>
@@ -23,6 +25,8 @@ export default class Button extends React.Component<ButtonPropsType, any> {
       prefixCls,
       type,
       size,
+      round,
+      square,
       disabled,
       loading,
       onClick,
@@ -39,7 +43,9 @@ export default class Button extends React.Component<ButtonPropsType, any> {
       [`${ prefixCls }--small`]: size === 'small',
       [`${ prefixCls }--mini`]: size === 'mini',
       [`${ prefixCls }--disabled`]: disabled,
-      [`${ prefixCls }--loading`]: loading
+      [`${ prefixCls }--loading`]: loading,
+      [`${ prefixCls }--square`]: square,
+      [`${ prefixCls }--round`]: round
     })
     const kids = React.Children.map(children, child => child)
     return (

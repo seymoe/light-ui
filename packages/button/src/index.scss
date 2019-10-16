@@ -32,7 +32,18 @@
   &:active::before {
     opacity: .1;
   }
-  &--default{
+
+  &--loading,
+  &--disabled {
+    &::before {
+      display: none;
+    }
+  }
+  &--disabled {
+    opacity: $button-disabled-opacity;
+  }
+
+  &--default {
     color: $button-default-color;
     background-color: $button-default-background-color;
     border: $button-border-width solid $button-default-border-color;
@@ -63,6 +74,7 @@
     padding: 0 $padding-lg;
     height: $button-large-height;
     line-height: $button-large-line-height;
+    font-size: $button-normal-font-size;
   }
   &--normal{
     padding: 0 $padding-md;
@@ -79,5 +91,13 @@
     font-size: $button-mini-font-size;
     height: $button-mini-height;
     line-height: $button-mini-line-height;
+  }
+
+  &--square {
+    border-radius: 0;
+  }
+
+  &--round {
+    border-radius: $button-round-border-radius;
   }
 }

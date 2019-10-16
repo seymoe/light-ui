@@ -9,7 +9,8 @@
   transition: opacity 0.2s;
   -webkit-appearance: none;
   -webkit-text-size-adjust: 100%;
-  cursor: default; }
+  cursor: default;
+  outline: none; }
   .lt-button::before {
     position: absolute;
     top: 50%;
@@ -26,6 +27,10 @@
     content: ''; }
   .lt-button:active::before {
     opacity: .1; }
+  .lt-button--loading::before, .lt-button--disabled::before {
+    display: none; }
+  .lt-button--disabled {
+    opacity: 0.5; }
   .lt-button--default {
     color: #323233;
     background-color: #fff;

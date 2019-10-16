@@ -60,7 +60,7 @@ var classnames = createCommonjsModule(function (module) {
 
 class Button extends Component {
     render() {
-        const { prefixCls, type, size, disabled, loading, onClick, children } = this.props;
+        const { prefixCls, type, size, round, square, disabled, loading, onClick, children } = this.props;
         const wrapCls = classnames(prefixCls, {
             [`${prefixCls}--default`]: type === 'default',
             [`${prefixCls}--primary`]: type === 'primary',
@@ -72,7 +72,9 @@ class Button extends Component {
             [`${prefixCls}--small`]: size === 'small',
             [`${prefixCls}--mini`]: size === 'mini',
             [`${prefixCls}--disabled`]: disabled,
-            [`${prefixCls}--loading`]: loading
+            [`${prefixCls}--loading`]: loading,
+            [`${prefixCls}--square`]: square,
+            [`${prefixCls}--round`]: round
         });
         const kids = Children.map(children, child => child);
         return (createElement("button", { className: wrapCls, onClick: disabled ? undefined : onClick }, kids));
